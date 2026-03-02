@@ -1,7 +1,7 @@
 'use strict';
 //OBJECT ORIENTED PROGRAMMING
+/*
 //Constructor Functions
-
 const Person = function (name, birthYear) {
   this.name = name;
   this.birthYear = birthYear;
@@ -59,3 +59,6 @@ mercedes.accelerate();
 mercedes.accelerate();
 mercedes.accelerate();
 mercedes.accelerate();
+*/
+
+const person = class {};
