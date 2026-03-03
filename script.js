@@ -57,8 +57,56 @@ mercedes.accelerate();
 mercedes.accelerate();
 mercedes.accelerate();
 mercedes.accelerate();
+mercedes.accelera
+te();
 mercedes.accelerate();
-mercedes.accelerate();
+
+// const PersonCl = class {};
+//ES6 Classes
+class PersonCl {
+  constructor(name, birthYear) {
+    this.name = name;
+    this.birthYear = birthYear;
+  }
+
+  calcAge() {
+    console.log(2026 - this.birthYear);
+  }
+}
+
+const sophiat = new PersonCl('Sophiat', 1999);
+sophiat.calcAge();
+
+const account = {
+  owner: 'Code Vortex',
+  movements: [120, 233, 533, 911, 666, 999],
+
+  get latest() {
+    return this.movements.slice(-1).pop();
+  },
+
+  set latest(mov) {
+    this.movements.push(mov);
+  },
+};
+console.log(account.latest);
+account.latest = 1000;
+console.log(account.movements);
 */
 
-const person = class {};
+const NewPersonProto = {
+  calcAge() {
+    return 2026 - this.birthYear;
+  },
+
+  init(firstName, birthYear) {
+    this.birthYear = birthYear;
+    this.firstName = firstName;
+
+    console.log(`${firstName} is currently ${this.calcAge()} years old.`);
+  },
+};
+
+const vortex = Object.create(NewPersonProto);
+vortex.init('Code Vortex', 2000);
+vortex.calcAge();
