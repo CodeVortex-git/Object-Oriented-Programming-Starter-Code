@@ -92,8 +92,8 @@ const account = {
 console.log(account.latest);
 account.latest = 1000;
 console.log(account.movements);
-*/
 
+//Object.create()
 const NewPersonProto = {
   calcAge() {
     return 2026 - this.birthYear;
@@ -110,3 +110,36 @@ const NewPersonProto = {
 const vortex = Object.create(NewPersonProto);
 vortex.init('Code Vortex', 2000);
 vortex.calcAge();
+*/
+
+//Codng Challenge 2
+
+class NewCar {
+  constructor(make, speed) {
+    this.make = make;
+    this.speed = speed;
+  }
+  accelerate() {
+    this.speed += 10;
+    return this.speed;
+  }
+
+  brake() {
+    this.speed -= 5;
+    return this.speed;
+  }
+  get speedUs() {
+    return this.speed / 1.6;
+  }
+
+  set speedUs(s) {
+    this.speed = s * 1.6;
+  }
+}
+
+const ford = new NewCar('Ford', 120);
+const lambo = new NewCar('Lamboghini', 75);
+lambo.speedUs = 120;
+console.log(ford.speedUs);
+console.log(ford.accelerate());
+console.log(lambo.speedUs);
