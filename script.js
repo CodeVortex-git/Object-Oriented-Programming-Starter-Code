@@ -110,7 +110,6 @@ const NewPersonProto = {
 const vortex = Object.create(NewPersonProto);
 vortex.init('Code Vortex', 2000);
 vortex.calcAge();
-*/
 
 //Codng Challenge 2
 
@@ -132,6 +131,7 @@ class NewCar {
     return this.speed / 1.6;
   }
 
+
   set speedUs(s) {
     this.speed = s * 1.6;
   }
@@ -143,3 +143,106 @@ lambo.speedUs = 120;
 console.log(ford.speedUs);
 console.log(ford.accelerate());
 console.log(lambo.speedUs);
+
+//Inheritance between classes
+//Parent Element
+const Person = function (name, birthYear) {
+  this.name = name;
+  this.birthYear = birthYear;
+};
+Person.prototype.calcAge = function () {
+  return 2026 - this.birthYear;
+};
+
+const Vortex = new Person('Vortex', 1999);
+
+Vortex.calcAge();
+// console.log(Vortex.name);
+
+//Child Element
+const Student = function (name, birthYear, course) {
+  Person.call(this, name, birthYear);
+  this.course = course;
+};
+
+Student.prototype = Object.create(Person.prototype);
+Student.prototype.introduce = function () {
+  console.log(
+    `My name is ${this.name}. I am ${this.calcAge()} years old. I am studying ${this.course}`,
+  );
+};
+const Vixen = new Student('Vixen', 2000, 'Cybernetics');
+Vixen.introduce();
+Vixen.calcAge();
+
+*/
+//Coding Challenge 3
+
+class Car {
+  constructor(make, speed) {
+    this.make = make;
+    this.speed = speed;
+  }
+  accelerate() {
+    this.speed += 20;
+    return this.speed;
+  }
+
+  brake() {
+    this.speed -= 5;
+    return this.speed;
+  }
+  get speedUs() {
+    return this.speed / 1.6;
+  }
+
+  set speedUs(s) {
+    this.speed = s * 1.6;
+  }
+}
+
+//Electric Vehicle
+class CarEv extends Car {
+  //Linking Electric Vehicle to the Car class
+  constructor(make, speed, charge) {
+    super(make, speed);
+    this.charge = charge;
+  }
+  //Tesla going at a speed of 140km/h, with a charge of 22%
+  chargeBattery(chargeTo) {
+    this.charge = chargeTo;
+    console.log(`This ${this.make} is now charged to ${this.charge}%`);
+  }
+
+  accelerate() {
+    super.accelerate();
+    this.charge -= 1; //Reduce the charge by 1
+    console.log(
+      `This ${this.make} is going at ${this.speed}km/h, with a charge of ${this.charge}`,
+    );
+  }
+
+  brake() {
+    super.brake();
+    console.log(`This ${this.make} is going at ${this.speed}km/h`);
+  }
+}
+
+const tesla = new CarEv('Tesla', 120, 23);
+tesla.accelerate();
+tesla.accelerate();
+tesla.accelerate();
+tesla.accelerate();
+tesla.accelerate();
+tesla.accelerate();
+tesla.accelerate();
+tesla.brake();
+tesla.brake();
+tesla.brake();
+tesla.brake();
+tesla.brake();
+tesla.brake();
+tesla.brake();
+tesla.brake();
+
+tesla.chargeBattery(100);
